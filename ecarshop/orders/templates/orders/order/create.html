@@ -1,0 +1,58 @@
+{% extends 'shop/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="container py-5">
+    <div class="row" style="margin-top: 6%">
+        <div class="col-md-8">
+            <h1>Order form</h1>
+            <form action="." method="post">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <br>
+                <input type="submit" class="btn btn-outline-secondary" value="Confirm order">
+            </form>
+        </div>
+        <div class="col-md-4">
+            <div class="page-header">
+                <h3>Your order</h3>
+                {% for item in cart %}
+                <table class="table table-hover">
+                    <tbody>
+                    <tr>
+                        <th scope="row">Vehicle:</th>
+                        <td><span class="badge bg-secondary">{{ item.vehicle }}</span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Quantity:</th>
+                        <td>{{ item.quantity }}x</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Unit price:</th>
+                        <td>${{ item.price }}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Price:</th>
+                        <td>${{ item.total_price }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <br>
+                {% endfor %}
+
+                <table class="table table-hover">
+                    <tbody>
+                    <tr class="total">
+                        <td><strong>TOTAL:</strong></td>
+                        <td class="num"><strong>${{ cart.get_total_price }}</strong></td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+<li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">Catalog</a>
+  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+    {% for type, count in types_dict.items %}
+    <li><a class="dropdown-item" href="{{ type.get_absolute_url }}">{{ type.title }} <span class="badge rounded-pill bg-dark">{{ count }}</span></a></li>
+    {% endfor %}
+  </ul>
+</li>

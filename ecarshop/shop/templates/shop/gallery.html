@@ -1,0 +1,81 @@
+{% extends 'shop/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block content %}
+<section class="main-content">
+    <div class="container">
+        <h1>{{ title }}</h1><br>
+        <div class="row">
+            {% for vehicle in page_obj %}
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="image-flip">
+                    <div class="mainflip">
+                        <div class="frontside">
+                            <div class="card">
+                                <div class="vehicle-thumb">
+                                    <a href="{{ vehicle.get_absolute_url }}"><img src="{% static 'shop/images/Tesla-Model-3.jpg' %}" alt="..."></a>
+                                </div>
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">{{ vehicle }}</h4>
+                                    <p class="card-text">
+                                        {{ vehicle.description|truncatewords:20 }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="backside">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <h4 class="card-title">{{ vehicle }}</h4>
+                                    <p class="card-text">
+                                        Lorem ipsum dolor sit amet, consectetur.
+                                    </p>
+                                    <table class="table table-sm table-hover text-start">
+                                        <tbody>
+                                        <tr>
+                                            <td>Engine power:</td>
+                                            <td class="text-end">{{ vehicle.power }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Range:</td>
+                                            <td class="text-end">{{ vehicle.range }}</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Max speed:</td>
+                                            <td class="text-end">{{ vehicle.max_speed }}</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <a href="{{ vehicle.get_absolute_url }}" class="btn btn-outline-primary btn-sm">Read more &#10132;</a>
+                                </div>
+                                <div class="vehicle-details">
+                                    <div class="vehicle-bottom-details d-flex justify-content-between">
+                                        <div class="vehicle-price">
+                                            ${{ vehicle.price }}
+                                        </div>
+                                        <div class="vehicle-links">
+                                            <form action="{% url 'cart:cart_add' vehicle.slug %}" method="post">
+                                                <div class="visually-hidden">
+                                                    {% csrf_token %}
+                                                    {{ cart_vehicle_form.quantity|as_crispy_field }}
+                                                </div>
+                                                <button type="submit" class="btn btn-outline-secondary"><i class="bi bi-cart3"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <h4>Sorry, no vehicles are available</h4>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock content %}

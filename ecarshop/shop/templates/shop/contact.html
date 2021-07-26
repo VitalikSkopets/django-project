@@ -1,0 +1,33 @@
+{% extends 'shop/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<!--Contact form-->
+<section>
+    <div class="container" style="width: 40rem;">
+        <h1 class="text-left">{{ title }}</h1>
+        <h4 class="text-left">Contact us directly if you have any questions</h4>
+        <p class="text-left">
+            Please write your name, email address and a message below if you have any questions.
+            One of our staff members will be happy to contact you directly and answer your questions as soon as possible.
+        </p>
+    </div>
+    <div class="row justify-content-center">
+        <form method="post" style="width: 40rem;">
+            {% csrf_token %}
+            {{form|crispy}}
+            <div class="d-grid gap-2">
+                <button class="btn btn-outline-secondary" type="submit">Submit</button>
+            </div>
+        </form>
+    </div>
+</section>
+<!--end of Contact form-->
+
+<!--Icon Bar-->
+{% include 'shop/includes/iconbar.html' %}
+<!--end of Icon Bar-->
+
+{% endblock content %}

@@ -1,0 +1,78 @@
+{% extends 'shop/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<section>
+    <div class="container">
+        <h1>Your shopping cart</h1><br>
+        <div style="width: 75rem;">
+            <table class="table table-sm table-hover">
+                <thead class="table-light">
+                <tr>
+                    <th scope="col">Image</th>
+                    <th scope="col">Vehicle</th>
+                    <th scope="col">Specification</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Remove</th>
+                    <th scope="col">Unit price</th>
+                    <th scope="col">Price</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for item in cart %}
+                {% with vehicle=item.vehicle %}
+                <tr>
+                    <td>
+                        <a href="{{ vehicle.get_absolute_url }}">
+                            <img src="{% if vehicle.image %}{{ vehicle.image.url }}
+                                {% else %}
+                                    {% static 'img/no_image.png' %}
+                                {% endif %}">
+                        </a>
+                    </td>
+                    <td>{{ vehicle }}</td>
+                    <td><a class="link-dark" href="{{ vehicle.get_absolute_url }}">Details</a></td>
+                    <td>
+                        <form action="{% url 'cart:cart_add' vehicle.slug %}" method="post">
+                            {% csrf_token %}
+                            {{ item.update_quantity_form.quantity }}
+                            {{ item.update_quantity_form.update }}
+                            <button type="submit" class="btn btn-outline-secondary btn-sm">Update</button>
+                        </form>
+                    </td>
+                    <td>
+                        <a href="{% url 'cart:cart_remove' vehicle.slug %}">
+                            <input type="button" class="btn btn-outline-secondary btn-sm" value="Remove">
+                        </a>
+                    </td>
+                    <td class="num">${{ item.price }}</td>
+                    <td class="num">${{ item.total_price }}</td>
+                </tr>
+                {% endwith %}
+                {% endfor %}
+                </tbody>
+                <tfoot>
+                <tr class="total">
+                    <td><strong>TOTAL PRICE:</strong></td>
+                    <td colspan="5"></td>
+                    <td class="num"><strong>${{ cart.get_total_price }}</strong></td>
+                </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+
+    <div class="container">
+        <p class="text-right">
+            <a class="link-primary" href="{% url 'shop:gallery' %}">Continue shopping</a>
+            <a class="link-info" href="{% url 'orders:order_create' %}">Checkout</a>
+        </p>
+    </div>
+</section>
+
+<section>
+
+</section>
+
+{% endblock %}

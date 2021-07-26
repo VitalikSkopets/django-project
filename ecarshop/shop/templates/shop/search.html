@@ -1,0 +1,59 @@
+{% extends 'shop/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block content %}
+
+<!--Search-->
+<section class="main-content">
+    <div class="container">
+        <h1>Search results for the query "{{ query }}"</h1>
+        {% if query %}
+        <h3>
+            {% with results.count as total_results %}
+            Found {{ total_results }} result{{ total_results|pluralize }}
+            {% endwith %}
+        </h3>
+        <br>
+        {% for vehicle in results %}
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-sm-6">
+                    <div class="vehicle-card">
+                        <div class="vehicle-thumb">
+                            <a href="#"><img src="{% static 'shop/images/Tesla-Model-3.jpg' %}" alt="..."></a>
+                        </div>
+                        <div class="vehicle-details">
+                            <h4><a href="{{ vehicle.get_absolute_url }}">{{ vehicle }}</a></h4>
+                            <p>{{ vehicle.description }}</p>
+                            <div class="vehicle-bottom-details d-flex justify-content-between">
+                                <div class="vehicle-price">
+                                    ${{ vehicle.price }}
+                                </div>
+                                <div class="vehicle-links">
+                                    <form action="{% url 'cart:cart_add' vehicle.slug %}" method="post">
+                                        <div class="visually-hidden">
+                                            {% csrf_token %}
+                                            {{ cart_vehicle_form.quantity|as_crispy_field }}
+                                        </div>
+                                        <button type="submit" class="btn btn-outline-secondary"><i class="bi bi-cart3"></i></button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% empty %}
+        <p>Sorry, unfortunately there are no results for your query!</p>
+        {% endfor %}
+        {% endif %}
+    </div>
+</section>
+
+<!--end of Search-->
+
+{% endblock content %}

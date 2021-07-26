@@ -1,0 +1,74 @@
+{% extends 'shop/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% load static %}
+
+{% block content %}
+<div class="container-fluid my-carousel">
+    <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <img src="{% static 'shop/images/tesla.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'shop/images/tesla2.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'shop/images/tesla3.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="{% static 'shop/images/tesla4.jpg' %}" class="d-block w-100" alt="...">
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+<section class="main-content">
+    <div class="container">
+        <div class="row">
+            {% for vehicle in vehicles %}
+            <div class="col-lg-4 col-sm-6">
+                <div class="vehicle-card">
+                    <div class="vehicle-thumb">
+                        <a href="#"><img src="{% static 'shop/images/Tesla-Model-3.jpg' %}" alt="..."></a>
+                    </div>
+                    <div class="vehicle-details">
+                        <h4><a href="{{ vehicle.get_absolute_url }}">{{ vehicle }}</a></h4>
+                        <p>{{ vehicle.description }}</p>
+                        <div class="vehicle-bottom-details d-flex justify-content-between">
+                            <div class="vehicle-price">
+                                ${{ vehicle.price }}
+                            </div>
+                            <div class="vehicle-links">
+                                <form action="{% url 'cart:cart_add' vehicle.slug %}" method="post">
+                                    <div class="visually-hidden">
+                                        {% csrf_token %}
+                                        {{ cart_vehicle_form.quantity|as_crispy_field }}
+                                    </div>
+                                    <button type="submit" class="btn btn-outline-secondary"><i class="bi bi-cart3"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endblock %}

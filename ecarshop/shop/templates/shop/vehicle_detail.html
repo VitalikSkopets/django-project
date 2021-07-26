@@ -1,0 +1,79 @@
+{% extends 'shop/base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<br>
+<div class="container py-5">
+  <h1>{{ title }} <strong>{{ vehicle.make }} {{ vehicle.model }}</strong></h1>
+  <h3>Type vehicle: <span class="badge bg-secondary">{{ vehicle.type.title|upper }}</span></h3>
+  <h4>Last update: <span class="badge bg-secondary">{{ vehicle.time_update|date:"d-m-Y H:i:s" }}</span></h4>
+  <h4>ID vehicle: <span class="badge bg-secondary">{{ vehicle.pk }}</span></h4>
+</div>
+
+<div class="container py-1">
+  <div style="width: 50rem;">
+    <table class="table table-sm table-hover">
+      <caption>Сharacteristics table</caption>
+      <thead class="table-light">
+      <tr>
+        <th scope="col">Parameter</th>
+        <th scope="col">Value</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Engine power:</td>
+        <td>{{ vehicle.power }}</td>
+      </tr>
+      <tr>
+        <td>Battery:</td>
+        <td>{{ vehicle.battery }}</td>
+      </tr>
+      <tr>
+        <td>Type of battery:</td>
+        <td>{{ vehicle.type_of_battery }}</td>
+      </tr>
+      <tr>
+        <td>Range:</td>
+        <td>{{ vehicle.range }}</td>
+      </tr>
+      <tr>
+        <td>Charging time:</td>
+        <td>{{ vehicle.charging_time }}</td>
+      </tr>
+      <tr>
+        <td>From 0 to 100:</td>
+        <td>{{ vehicle.from_0_to_100 }}</td>
+      </tr>
+      <tr>
+        <td>Max speed:</td>
+        <td>{{ vehicle.max_speed }}</td>
+      </tr>
+      <tr>
+        <td>Torque engine:</td>
+        <td>{{ vehicle.torque }}</td>
+      </tr>
+      <tr>
+        <td>Type of drive:</td>
+        <td>{{ vehicle.type_of_drive }}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="container py-1">
+  <h2>Price: <span class="badge bg-secondary">${{ vehicle.price }}</span></h2>
+
+  <form action="{% url 'cart:cart_add' vehicle.slug %}" method="post" style="width: 10rem;">
+    {% csrf_token %}
+    {{ cart_vehicle_form|crispy }}
+    <button type="submit" class="btn btn-outline-secondary">Add to <i class="fas fa-cart-plus"></i></button>
+  </form>
+  <br>
+  {{ vehicle.description|linebreaks }}
+</div>
+
+{% endblock content %}

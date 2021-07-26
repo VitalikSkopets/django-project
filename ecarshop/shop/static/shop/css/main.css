@@ -1,0 +1,470 @@
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 400;
+    color: #000;
+    background-color: #fff;
+    min-width: 320px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+section {
+    padding: 60px 0;
+}
+
+a {
+    color: #111;
+}
+
+a:hover {
+    color: #555;
+}
+
+/* Header */
+.navbar {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.container, .container-fluid, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    padding-right: 0;
+}
+
+ p {
+    margin-bottom: 0;
+}
+
+.navbar-brand:hover {
+    background-color: #ddd;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #111;
+}
+
+.navbar-nav .dropdown-menu {
+    right: 0;
+    left: auto;
+}
+
+.top-link li a::after {
+    content: '';
+    display: block;
+    width: 100%;
+    background-color: #111;
+    height: 1px;
+    transition: all .3s;
+    transform: scale(0);
+}
+
+.top-link li a:hover:after {
+    transform: scale(1);
+}
+
+.top-link::after {
+    content: '';
+    display: block;
+    width: 100%;
+    background-color: #111;
+    height: 1px;
+    transition: all .3s;
+    transform: scale(0);
+}
+
+.top-link:hover:after {
+    transform: scale(1);
+}
+/* Header */
+
+/* Style the links inside the sidenav */
+#mySidenav a {
+    position: fixed; /* Position them relative to the browser window */
+    left: -90px; /* Position them outside of the screen */
+    transition: 0.3s; /* Add transition on hover */
+    padding: 15px; /* 15px padding */
+    width: 100px; /* Set a specific width */
+    text-decoration: none; /* Remove underline */
+    font-size: 20px; /* Increase font size */
+    color: white; /* White text color */
+    border-radius: 0 5px 5px 0; /* Rounded corners on the top right and bottom right side */
+}
+
+#mySidenav a:hover {
+    left: 0;
+}
+
+#facebook {
+    top: 200px;
+    background-color: #3B5998;
+}
+
+#twitter {
+    top: 270px;
+    background-color: #2196F3;
+}
+
+#youtube {
+    top: 340px;
+    background-color: #c4302b;
+}
+
+#linkedin {
+    top: 410px;
+    background-color: #007bb5;
+}
+/* Style the links inside the sidenav */
+
+/* Footer */
+.footer-dark {
+    padding: 50px 0;
+    color: #f0f9ff;
+    background-color: #282d32;
+}
+
+.footer-dark h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.footer-dark ul {
+    padding: 0;
+    list-style: none;
+    line-height: 1.6;
+    font-size: 14px;
+    margin-bottom: 0;
+}
+
+.footer-dark ul a {
+    color: inherit;
+    text-decoration: none;
+    opacity: 0.6;
+}
+
+.footer-dark ul a:hover {
+    opacity: 0.8;
+}
+
+@media (max-width:767px) {
+  .footer-dark .item:not(.social) {
+    text-align: center;
+    padding-bottom: 20px;
+  }
+}
+
+.footer-dark .item.text {
+    margin-bottom: 36px;
+}
+
+@media (max-width:767px) {
+  .footer-dark .item.text {
+    margin-bottom: 0;
+  }
+}
+
+.footer-dark .item.text p {
+    opacity: 0.6;
+    margin-bottom: 0;
+    font-size: 14px;
+}
+
+.footer-dark .item.social {
+    text-align: center;
+}
+
+@media (max-width:991px) {
+  .footer-dark .item.social {
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+.footer-dark .item.social > a {
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.4);
+    margin: 0 8px;
+    color: #fff;
+    opacity: 0.75;
+}
+
+.footer-dark .item.social > a:hover {
+    opacity: 0.9;
+}
+
+.footer-dark .copyright {
+    text-align: center;
+    padding-top: 24px;
+    opacity: 0.3;
+    font-size: 13px;
+    margin-bottom: 0;
+}
+/* Footer */
+
+/* Carousel */
+.my-carousel {
+    padding: 0;
+}
+
+.my-carousel .carousel-item {
+    display: flex;
+    max-height: 600px;
+}
+
+.my-carousel .carousel-item img {
+    object-fit: cover;
+}
+/* Carousel */
+
+/* Vehicle card */
+.vehicle-card {
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.06);
+    transition: all .3s;
+}
+
+.vehicle-card:hover {
+    box-shadow: 0 14px 30px -15px rgba(0, 0, 0, 0.75);
+}
+
+.vehicle-thumb a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    padding: 20px;
+}
+
+.vehicle-thumb img {
+    -webkit-transition:all .9s ease;
+    -moz-transition:all .9s ease;
+    -o-transition:all .9s ease;
+    -ms-transition:all .9s ease;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.vehicle-thumb img:hover {
+    opacity: 0.7;
+    -webkit-transform:scale(1.15);
+    -moz-transform:scale(1.15);
+    -ms-transform:scale(1.15);
+    -o-transform:scale(1.15);
+    transform:scale(1.15);
+}
+
+.vehicle-details {
+    padding: 20px;
+}
+
+.vehicle-details h4 a {
+    font-weight: 500;
+    display: block;
+}
+
+.vehicle-details p {
+    font-size: 15px;
+    margin-bottom: 20px;
+    color: #999;
+    height: 44px;
+    overflow: hidden;
+}
+
+.vehicle-bottom-details {
+    overflow: hidden;
+    border-top: 1px solid #eee;
+    padding-top: 20px;
+}
+
+.vehicle-price {
+    font-size: 24px;
+    color: #ee6e73;
+    font-weight: 600;
+}
+
+.vehicle-links a {
+    font-size: 18px;
+    margin-left: 10px;
+}
+/* Vehicle card */
+
+/* Google sign in */
+.google-link img {
+    transition: transform .2s;
+}
+
+.google-link img:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    -moz-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
+}
+/* Google sign in */
+
+/* my Btn Go to top */
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 30px;
+    z-index: 99;
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: red;
+    color: white;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+#myBtn:hover {
+    background-color: #555;
+}
+/* my Btn Go to top */
+
+/* mySearch */
+#mySearch input[type=text] {
+    width: 130px;
+    height: 40px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-size: 14px;
+    background-color: white;
+    background-image: url('https://www.w3schools.com/css/searchicon.png');
+    background-position: 10px 10px;
+    background-repeat: no-repeat;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+#mySearch input[type=text]:focus {
+    width: 130%;
+}
+/* mySearch */
+
+#zoom a {
+  transition: transform .2s;
+}
+
+#zoom a:hover {
+    -ms-transform: scale(1.5); /* IE 9 */
+    -webkit-transform: scale(1.5); /* Safari 3-8 */
+    -moz-transform: scale(1.5);
+    -o-transform: scale(1.5);
+    transform: scale(1.5);
+}
+
+.card {
+    border: none;
+    background: #ffffff;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.06);
+    transition: all .3s;
+}
+
+.card:hover {
+    box-shadow: 0 14px 30px -15px rgba(0, 0, 0, 0.75);
+}
+
+.image-flip:hover .backside,
+.image-flip.hover .backside {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+    border-radius: .25rem;
+}
+
+.image-flip:hover .frontside,
+.image-flip.hover .frontside {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+}
+
+.mainflip {
+    -webkit-transition: 1s;
+    -webkit-transform-style: preserve-3d;
+    -ms-transition: 1s;
+    -moz-transition: 1s;
+    -moz-transform: perspective(1000px);
+    -moz-transform-style: preserve-3d;
+    -ms-transform-style: preserve-3d;
+    transition: 1s;
+    transform-style: preserve-3d;
+    position: relative;
+}
+
+.frontside {
+    position: relative;
+    -webkit-transform: rotateY(0deg);
+    -ms-transform: rotateY(0deg);
+    z-index: 2;
+    margin-bottom: 30px;
+}
+
+.backside {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: white;
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    -ms-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
+    -webkit-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+    -moz-box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+    box-shadow: 5px 7px 9px -4px rgb(158, 158, 158);
+}
+
+.frontside,
+.backside {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-transition: 1s;
+    -webkit-transform-style: preserve-3d;
+    -moz-transition: 1s;
+    -moz-transform-style: preserve-3d;
+    -o-transition: 1s;
+    -o-transform-style: preserve-3d;
+    -ms-transition: 1s;
+    -ms-transform-style: preserve-3d;
+    transition: 1s;
+    transform-style: preserve-3d;
+}
+
+.frontside .card,
+.backside .card {
+    min-height: 312px;
+}
+
+.backside .card a {
+    font-size: 16px;
+
+}
+
+.frontside .card .card-body img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
