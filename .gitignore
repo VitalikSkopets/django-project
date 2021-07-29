@@ -2,5 +2,3 @@
 /.idea/
 *.log
 .env
-Pipfile
-Pipfile.lock
